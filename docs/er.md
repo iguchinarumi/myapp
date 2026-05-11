@@ -5,7 +5,7 @@
 | カラム名     | 型        | 制約                       | 意味                  |
 |-------------|-----------|---------------------------|----------------------|
 | **id**      | integer   | PK, 自動採番                | 主キー（一意のID）       |
-| title       | string    |                            | タスクのタイトル          |
+| title       | string    | NOT NULL                   | タスクのタイトル          |
 | completed   | boolean   | default: false, NOT NULL   | 完了したかどうか         |
 | created_at  | datetime  | NOT NULL                   | 作成日時（Rails自動）    |
 | updated_at  | datetime  | NOT NULL                   | 更新日時（Rails自動）    |
@@ -17,7 +17,7 @@
 │ todos                        │
 ├──────────────────────────────┤
 │ [PK] id        : integer     │
-│      title     : string      │
+│      title     : string      │  NOT NULL
 │      completed : boolean     │  default: false, NOT NULL
 │      created_at: datetime    │
 │      updated_at: datetime    │
