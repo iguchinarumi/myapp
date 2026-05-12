@@ -1,0 +1,23 @@
+<h1>Todoの詳細</h1>
+
+<p>
+  <strong>タイトル：</strong>
+  <%= @todo.title %>
+</p>
+
+<p>
+  <strong>状態：</strong>
+  <%= @todo.completed ? "完了" : "未完了" %>
+</p>
+
+<p>
+  <strong>作成日時：</strong>
+  <%= @todo.created_at %>
+</p>
+
+<p>
+  <strong>更新日時：</strong>
+  <%= @todo.updated_at %>
+</p>
+
+<%= link_to "一覧に戻る", todos_path %>

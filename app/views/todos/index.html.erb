@@ -1,12 +1,15 @@
-<h1>Todo一覧</h1>
-
-<%= link_to "新しいTodoを追加", new_todo_path %>
-
-<ul>
-  <% @todos.each do |todo| %>
-    <li>
-      <%= todo.title %>
-      （<%= todo.completed ? "完了" : "未完了" %>）
-    </li>
-  <% end %>
-</ul>
+<h1>Todo一覧</h1>                           
+                                                                                                       
+  <%= link_to "新しいTodoを追加", new_todo_path %>
+                                                                                                       
+  <ul>                                    
+    <% @todos.each do |todo| %>                                                                        
+      <li>                                                                                             
+        <%= todo.title %>                 
+        （<%= todo.completed ? "完了" : "未完了" %>）                                                  
+        <%= link_to "詳細", todo %>                                             
+        <%= link_to "編集", edit_todo_path(todo) %>
+        <%= button_to "削除", todo, method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
+      </li>                                                                                            
+    <% end %>          
+  </ul>               
