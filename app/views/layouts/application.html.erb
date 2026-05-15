@@ -24,6 +24,16 @@
   </head>
 
   <body>
+    <div style="background: #eee; padding: 10px; margin-bottom: 20px;">
+      <% if current_user %>
+        ようこそ <%= current_user.name %> さん |
+        <%= button_to "ログアウト", logout_path, method: :delete %>
+      <% else %>
+        <%= link_to "ログイン", login_path %> |
+        <%= link_to "新規登録", new_user_path %>
+      <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>
