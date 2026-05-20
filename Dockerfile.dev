@@ -1,0 +1,35 @@
+# 開発環境用 Dockerfile（Docker Compose 経由で使う前提）
+# 本番用は ./Dockerfile を参照
+
+# 1) ベースイメージ：Ruby 3.3 が入った軽量Linux
+ARG RUBY_VERSION=3.3.11
+FROM ruby:${RUBY_VERSION}-slim
+
+# 2) 作業ディレクトリ（コンテナ内のここでアプリが動く）
+WORKDIR /rails
+
+# 3) 必要なシステムパッケージをインストール
+#    - build-essential: gem ビルド用のCコンパイラ等
+#    - git: 一部 gem が git から取得される時に必要
+#    - libvips: image_processing gem 用
+#    - libyaml-dev: psych (YAML) gem 用
+#    - libpq-dev: pg gem を動かすのに必須（PostgreSQL のクライアントライブラリ）
+#    - pkg-config / curl: 各種 gem のビルド・取得補助
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y \
+      build-essential git libvips libyaml-dev libpq-dev pkg-config curl && \
+    rm -rf /var/lib/apt/lists/*
+
+# 4) Gemfile を先にコピーして bundle install
+#    （コード変更時にも bundle install のキャッシュを効かせるための定石）
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+
+# 5) アプリのコード全体をコピー
+#    （docker compose では volume で上書きされるが、初回ビルドのために必要）
+COPY . .
+
+# 6) 起動時に Rails サーバーを立ち上げる
+#    -b 0.0.0.0 で外部（コンテナの外）からアクセス可能に
+EXPOSE 3000
+CMD ["bin/rails", "server", "-b", "0.0.0.0"]
