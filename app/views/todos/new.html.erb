@@ -1,5 +1,11 @@
-<h1>新しいTodoを追加</h1>
+<div class="form-card">
+  <div class="page-header">
+    <h1 class="page-header__title">新しいTodo</h1>
+  </div>
 
-<%= render "form" %>
+  <%= render "form" %>
 
-<%= link_to "一覧に戻る", todos_path %>
+  <div class="page-actions">
+    <%= link_to "← 一覧に戻る", todos_path, class: "button" %>
+  </div>
+</div>

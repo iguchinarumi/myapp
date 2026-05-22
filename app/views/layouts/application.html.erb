@@ -18,22 +18,51 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
+    <%# ガラケー用ピクセルフォント %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <div style="background: #eee; padding: 10px; margin-bottom: 20px;">
-      <% if current_user %>
-        ようこそ <%= current_user.name %> さん |
-        <%= button_to "ログアウト", logout_path, method: :delete %>
-      <% else %>
-        <%= link_to "ログイン", login_path %> |
-        <%= link_to "新規登録", new_user_path %>
-      <% end %>
-    </div>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <h1 class="site-header__logo">
+          <%= link_to "Myapp", root_path, class: "site-header__logo-link" %>
+        </h1>
+        <nav class="site-header__nav">
+          <% if current_user %>
+            <span class="site-header__greeting">ようこそ <%= current_user.name %> さん</span>
+            <%= button_to "ログアウト", logout_path, method: :delete, class: "site-header__button" %>
+          <% else %>
+            <%= link_to "ログイン", login_path, class: "site-header__link" %>
+            <%= link_to "新規登録", new_user_path, class: "site-header__link" %>
+          <% end %>
+        </nav>
+      </div>
+    </header>
 
-    <%= yield %>
+    <main class="main">
+      <div class="main__inner">
+        <div class="phone-screen">
+          <div class="status-bar">
+            <span class="status-bar__signal">📶 <span class="status-bar__label">docomo</span></span>
+            <span class="status-bar__title">💖 Myapp</span>
+            <span class="status-bar__battery"><span class="status-bar__label">FULL</span> 🔋</span>
+          </div>
+          <div class="phone-screen__content">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p class="site-footer__copyright">© 2026 Myapp</p>
+    </footer>
   </body>
 </html>

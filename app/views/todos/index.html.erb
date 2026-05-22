@@ -1,15 +1,26 @@
-<h1>Todo一覧</h1>                           
-                                                                                                       
-  <%= link_to "新しいTodoを追加", new_todo_path %>
-                                                                                                       
-  <ul>                                    
-    <% @todos.each do |todo| %>                                                                        
-      <li>                                                                                             
-        <%= todo.title %>                 
-        （<%= todo.completed ? "完了" : "未完了" %>）                                                  
-        <%= link_to "詳細", todo %>                                             
-        <%= link_to "編集", edit_todo_path(todo) %>
-        <%= button_to "削除", todo, method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
-      </li>                                                                                            
-    <% end %>          
-  </ul>               
+<div class="page-header">
+  <h1 class="page-header__title">Todo一覧</h1>
+  <%= link_to "+ 新しいTodo", new_todo_path, class: "button button--primary" %>
+</div>
+
+<% if @todos.empty? %>
+  <p class="empty-state">まだ Todo がありません。さっそく作ってみましょう！</p>
+<% else %>
+  <ul class="todo-list">
+    <% @todos.each do |todo| %>
+      <li class="todo-card <%= 'todo-card--done' if todo.completed %>">
+        <div class="todo-card__body">
+          <span class="todo-card__status <%= todo.completed ? 'todo-card__status--done' : 'todo-card__status--pending' %>">
+            <%= todo.completed ? "✓ 完了" : "○ 未完了" %>
+          </span>
+          <h2 class="todo-card__title"><%= todo.title %></h2>
+        </div>
+        <div class="todo-card__actions">
+          <%= link_to "詳細", todo, class: "button button--small" %>
+          <%= link_to "編集", edit_todo_path(todo), class: "button button--small" %>
+          <%= button_to "削除", todo, method: :delete, form: { class: "todo-card__delete-form" }, class: "button button--small button--danger", data: { turbo_confirm: "本当に削除しますか？" } %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

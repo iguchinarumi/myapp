@@ -1,0 +1,887 @@
+/* ============================================
+ * ✨💖🐆 GYARU LEOPARD KIRAKIRA THEME 🐆💖✨
+ * ============================================
+ *
+ * ピンクヒョウ柄 + キラキラアニメーションでギャル全開
+ */
+
+/* ------------------------------------------
+ * 0) アニメーション定義
+ * ------------------------------------------ */
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  25% { opacity: 0.5; transform: scale(0.7) rotate(15deg); }
+  50% { opacity: 1; transform: scale(1.1) rotate(0deg); }
+  75% { opacity: 0.6; transform: scale(0.8) rotate(-15deg); }
+}
+
+@keyframes shine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(3deg); }
+  75% { transform: rotate(-3deg); }
+}
+
+/* ------------------------------------------
+ * 1) リセット系
+ * ------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* ------------------------------------------
+ * 2) ベース：ピンクヒョウ柄背景
+ * ------------------------------------------ */
+
+body {
+  font-family: "Hiragino Maru Gothic ProN", "Yu Gothic UI", "Meiryo",
+               -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #4a1f3a;
+  /* ピンクのグラデ背景（ヒョウ柄やめ） */
+  background: linear-gradient(135deg, #fff0f7 0%, #ffe0ee 50%, #ffd6e8 100%);
+  min-height: 100vh;
+}
+
+a {
+  color: #e91e63;
+  text-decoration: none;
+  font-weight: 700;
+}
+a:hover {
+  text-decoration: underline;
+  color: #c2185b;
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: 800;
+}
+
+/* ------------------------------------------
+ * 3) サイトヘッダー：キラキラピンク
+ * ------------------------------------------ */
+
+.site-header {
+  background: linear-gradient(180deg, #ff99cc 0%, #ff3399 40%, #e91e63 80%, #c2185b 100%);
+  border-bottom: 5px solid #c2185b;
+  padding: 14px 0;
+  box-shadow: 0 6px 20px rgba(233, 30, 99, 0.5),
+              0 0 30px rgba(255, 51, 153, 0.3);
+  position: relative;
+}
+
+/* ヘッダーに小さなキラキラを散りばめる */
+.site-header::before {
+  content: "✨";
+  position: absolute;
+  top: 6px;
+  left: 12%;
+  font-size: 18px;
+  animation: twinkle 2s ease-in-out infinite;
+}
+.site-header::after {
+  content: "✨";
+  position: absolute;
+  bottom: 8px;
+  right: 12%;
+  font-size: 16px;
+  animation: twinkle 2.4s ease-in-out infinite 0.5s;
+}
+
+.site-header__inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (min-width: 640px) {
+  .site-header__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+  }
+}
+
+.site-header__logo {
+  font-size: 24px;
+  margin: 0;
+  letter-spacing: 1px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.site-header__logo-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 900;
+  text-shadow:
+    0 0 6px #fff,
+    0 0 12px #ff99cc,
+    0 0 20px #ff3399,
+    0 2px 4px rgba(194, 24, 91, 0.6);
+}
+.site-header__logo-link::before {
+  content: "💖";
+  display: inline-block;
+  margin-right: 6px;
+  animation: wiggle 1.5s ease-in-out infinite;
+}
+.site-header__logo-link::after {
+  content: "✨";
+  display: inline-block;
+  margin-left: 6px;
+  animation: twinkle 1.8s ease-in-out infinite;
+}
+.site-header__logo-link:hover {
+  text-decoration: none;
+  color: #fff0f7;
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.site-header__greeting {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  text-shadow: 0 0 8px #ff99cc, 0 1px 2px rgba(194, 24, 91, 0.6);
+}
+.site-header__greeting::before {
+  content: "💕 ";
+  animation: twinkle 2s ease-in-out infinite 0.3s;
+  display: inline-block;
+}
+
+.site-header__link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 800;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 1px 2px rgba(194, 24, 91, 0.6);
+}
+.site-header__link:hover {
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+}
+
+.site-header__button {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 800;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  cursor: pointer;
+  text-shadow: 0 1px 2px rgba(194, 24, 91, 0.5);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+.site-header__button:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+}
+
+/* ------------------------------------------
+ * 4) メインコンテンツの外枠
+ * ------------------------------------------ */
+
+.main {
+  min-height: calc(100vh - 180px);
+}
+
+.main__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 12px;
+}
+
+/* ------------------------------------------
+ * 4.5) ★ガラケー風 LCD スクリーン★
+ * ------------------------------------------ */
+
+.phone-screen {
+  background: linear-gradient(135deg, #fffafc 0%, #fff0f7 100%);
+  border-radius: 22px;
+  /* 外側のピンクプラスチック枠を多重 box-shadow で表現 */
+  box-shadow:
+    inset 0 0 0 2px #fff,                /* 内側の薄い縁 */
+    inset 0 2px 6px rgba(194, 24, 91, 0.15),  /* LCD の沈み込み感 */
+    0 0 0 6px #ff77b3,                   /* 第1の枠 = ピンク本体 */
+    0 0 0 9px #c2185b,                   /* 第2の枠 = 濃いピンク */
+    0 0 0 12px #ff77b3,                  /* 第3の枠 */
+    0 12px 32px rgba(194, 24, 91, 0.45); /* 全体の影 */
+  overflow: hidden;
+  margin: 20px 12px;
+}
+
+.phone-screen__content {
+  padding: 22px 18px 26px;
+}
+
+@media (min-width: 640px) {
+  .phone-screen__content {
+    padding: 28px 26px 32px;
+  }
+}
+
+/* ステータスバー：ガラケー上部の電波・名前・電池表示 */
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 14px;
+  background: linear-gradient(180deg, #ffd6e8 0%, #ffb3d1 100%);
+  border-bottom: 2px solid #c2185b;
+  font-family: "DotGothic16", "Courier New", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #4a1f3a;
+  letter-spacing: 0;
+}
+
+.status-bar__signal,
+.status-bar__battery {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.status-bar__label {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.status-bar__title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #c2185b;
+  white-space: nowrap;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* ------------------------------------------
+ * 5) フッター
+ * ------------------------------------------ */
+
+.site-footer {
+  background: linear-gradient(180deg, #ff99cc 0%, #ff3399 50%, #c2185b 100%);
+  border-top: 5px solid #c2185b;
+  padding: 18px 16px;
+  text-align: center;
+  box-shadow: 0 -6px 20px rgba(233, 30, 99, 0.4);
+  position: relative;
+}
+.site-footer::before {
+  content: "✨";
+  position: absolute;
+  top: 8px;
+  left: 20%;
+  font-size: 14px;
+  animation: twinkle 2.2s ease-in-out infinite;
+}
+.site-footer::after {
+  content: "✨";
+  position: absolute;
+  bottom: 10px;
+  right: 20%;
+  font-size: 16px;
+  animation: twinkle 1.8s ease-in-out infinite 0.4s;
+}
+
+.site-footer__copyright {
+  margin: 0;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  text-shadow: 0 0 8px #ff99cc, 0 1px 2px rgba(194, 24, 91, 0.6);
+  letter-spacing: 1px;
+}
+.site-footer__copyright::before {
+  content: "💕 ";
+}
+.site-footer__copyright::after {
+  content: " 💕";
+}
+
+/* ------------------------------------------
+ * 6) ボタン
+ * ------------------------------------------ */
+
+/* ★ガラケー風ハードウェアボタン★
+ * 立体感のあるピンクプラスチック、押すと沈む */
+.button {
+  display: inline-block;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.4;
+  border: 1.5px solid #c2185b;
+  border-radius: 10px;          /* 角丸長方形（ピル型をやめてガラケーボタンっぽく）*/
+  background: linear-gradient(180deg, #fff0f7 0%, #ffb3d1 50%, #ff77b3 100%);
+  color: #c2185b;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.08s, box-shadow 0.08s;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  font-family: "DotGothic16", "Hiragino Maru Gothic ProN", sans-serif;
+  letter-spacing: 1px;
+  /* 立体感：上から光、下に影、奥行きを示す底色 */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -2px 0 rgba(194, 24, 91, 0.3),
+    0 3px 0 #c2185b,
+    0 4px 8px rgba(194, 24, 91, 0.4);
+}
+.button:hover {
+  background: linear-gradient(180deg, #fff5fa 0%, #ffc1de 50%, #ff85bb 100%);
+  color: #c2185b;
+  text-decoration: none;
+}
+.button:active {
+  /* 押された：本体が下に2px沈み、底の影も消える */
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 2px 4px rgba(194, 24, 91, 0.3),
+    0 1px 0 #c2185b,
+    0 1px 3px rgba(194, 24, 91, 0.3);
+}
+
+/* --primary：濃いピンクのハードウェアボタン */
+.button--primary {
+  background: linear-gradient(180deg, #ff77b3 0%, #ff3399 50%, #e91e63 100%);
+  border-color: #8b1d4a;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 0 rgba(139, 29, 74, 0.5),
+    0 3px 0 #8b1d4a,
+    0 4px 12px rgba(139, 29, 74, 0.5);
+  animation: none;
+}
+.button--primary:hover {
+  background: linear-gradient(180deg, #ff8cc0 0%, #ff47a3 50%, #ee2873 100%);
+  color: #ffffff;
+}
+.button--primary:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 2px 4px rgba(139, 29, 74, 0.5),
+    0 1px 0 #8b1d4a,
+    0 1px 3px rgba(139, 29, 74, 0.4);
+}
+
+/* --danger：赤紫グラデのハードウェアボタン */
+.button--danger {
+  background: linear-gradient(180deg, #ffe0ee 0%, #ffb3d1 50%, #ff6b9d 100%);
+  border-color: #8b1d4a;
+  color: #8b1d4a;
+}
+.button--danger:hover {
+  background: linear-gradient(180deg, #ffe9f2 0%, #ffc1de 50%, #ff80b0 100%);
+  color: #8b1d4a;
+}
+
+.button--small {
+  padding: 5px 12px;
+  font-size: 11px;
+  border-radius: 8px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -1px 0 rgba(194, 24, 91, 0.3),
+    0 2px 0 #c2185b,
+    0 3px 5px rgba(194, 24, 91, 0.35);
+}
+.button--small:active {
+  transform: translateY(1px);
+  box-shadow:
+    inset 0 1px 3px rgba(194, 24, 91, 0.3),
+    0 1px 0 #c2185b,
+    0 1px 2px rgba(194, 24, 91, 0.3);
+}
+
+form.button_to {
+  margin: 0;
+  display: inline;
+}
+
+/* ------------------------------------------
+ * 7) ページ見出し
+ * ------------------------------------------ */
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 640px) {
+  .page-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+}
+
+/* タイトルはグラデ文字＋シャイン */
+.page-header__title {
+  font-size: 28px;
+  margin: 0;
+  font-weight: 900;
+  background: linear-gradient(90deg, #c2185b, #ff3399, #ff77b3, #e91e63, #c2185b);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(233, 30, 99, 0.2);
+}
+.page-header__title::before {
+  content: "💖";
+  -webkit-text-fill-color: initial;
+  background: none;
+  display: inline-block;
+  margin-right: 8px;
+  animation: wiggle 1.6s ease-in-out infinite;
+}
+.page-header__title::after {
+  content: "✨";
+  -webkit-text-fill-color: initial;
+  background: none;
+  display: inline-block;
+  margin-left: 8px;
+  animation: twinkle 1.8s ease-in-out infinite;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 16px;
+  color: #c2185b;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 3px dashed #ff77b3;
+  border-radius: 20px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(233, 30, 99, 0.15);
+}
+.empty-state::before {
+  content: "🌸 ";
+  animation: wiggle 2s ease-in-out infinite;
+  display: inline-block;
+}
+.empty-state::after {
+  content: " 🌸";
+  animation: wiggle 2s ease-in-out infinite 0.3s;
+  display: inline-block;
+}
+
+/* ------------------------------------------
+ * 8) Todo 一覧
+ * ------------------------------------------ */
+
+/* ★ガラケー風メニューリスト★ */
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 2px solid #ff77b3;
+  border-bottom: 2px solid #ff77b3;
+  background-color: #fffafc;
+}
+
+.todo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  padding: 12px 14px 12px 28px;       /* 左に余白を多めにとって "選択マーク" の場所を作る */
+  background: linear-gradient(180deg, #fffafc 0%, #fff0f7 100%);
+  border: none;
+  border-bottom: 1px dashed #ffb3d1;
+  border-radius: 0;
+  transition: background 0.1s, padding-left 0.1s;
+  position: relative;
+}
+.todo-card:last-child {
+  border-bottom: none;
+}
+
+/* 左端の選択マーク ▶（ホバー時に色を変える） */
+.todo-card::before {
+  content: "▶";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #ff77b3;
+  transition: color 0.1s, transform 0.1s;
+}
+
+.todo-card:hover {
+  background: linear-gradient(180deg, #ffe0ee 0%, #ffd6e8 100%);
+}
+.todo-card:hover::before {
+  color: #ff3399;
+  transform: translateY(-50%) translateX(2px);
+  animation: wiggle 0.6s ease-in-out infinite;
+}
+
+@media (min-width: 640px) {
+  .todo-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 14px 14px 14px 32px;
+  }
+}
+
+@media (min-width: 640px) {
+  .todo-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+}
+
+.todo-card--done {
+  background: linear-gradient(135deg, #fff0f7 0%, #ffd6e8 100%);
+  opacity: 0.85;
+}
+
+.todo-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-card__status {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.todo-card__status--pending {
+  background: linear-gradient(135deg, #fff59d 0%, #ffd54f 100%);
+  color: #6d4c0e;
+  border: 1.5px solid #f9a825;
+  box-shadow: 0 2px 6px rgba(249, 168, 37, 0.3);
+}
+.todo-card__status--pending::before {
+  content: "💛 ";
+}
+
+.todo-card__status--done {
+  background: linear-gradient(135deg, #b9f6ca 0%, #69f0ae 100%);
+  color: #1b5e20;
+  border: 1.5px solid #2e7d32;
+  box-shadow: 0 2px 6px rgba(46, 125, 50, 0.3);
+}
+.todo-card__status--done::before {
+  content: "✨ ";
+}
+
+.todo-card__title {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0;
+  color: #4a1f3a;
+  word-break: break-word;
+}
+
+.todo-card--done .todo-card__title {
+  text-decoration: line-through;
+  text-decoration-color: #ff3399;
+  text-decoration-thickness: 2.5px;
+  color: #888;
+}
+
+.todo-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.todo-card__delete-form {
+  margin: 0;
+  display: inline;
+}
+
+/* ------------------------------------------
+ * 9) フォーム
+ * ------------------------------------------ */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 0;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form__group--inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.form__label {
+  font-size: 14px;
+  font-weight: 800;
+  color: #c2185b;
+}
+.form__label::before {
+  content: "💕 ";
+}
+
+.form__label--inline {
+  font-weight: 700;
+}
+.form__label--inline::before {
+  content: "";
+}
+
+.form__input {
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2.5px solid #ffb3d1;
+  border-radius: 14px;
+  background-color: #ffffff;
+  color: #4a1f3a;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-weight: 600;
+}
+.form__input:focus {
+  outline: none;
+  border-color: #ff3399;
+  box-shadow:
+    0 0 0 4px rgba(255, 51, 153, 0.25),
+    0 0 12px rgba(255, 51, 153, 0.4);
+}
+
+.form__checkbox {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: #ff3399;
+}
+
+.form__actions {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* ------------------------------------------
+ * 10) フォームのエラー
+ * ------------------------------------------ */
+
+.form__errors {
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #ffe0ee 0%, #ffccdf 100%);
+  border: 2.5px solid #ff6b9d;
+  border-radius: 14px;
+  color: #8b1d4a;
+  box-shadow: 0 3px 10px rgba(255, 107, 157, 0.25);
+}
+
+.form__errors-title {
+  font-size: 14px;
+  margin: 0 0 6px 0;
+  color: #8b1d4a;
+  font-weight: 800;
+}
+.form__errors-title::before {
+  content: "💔 ";
+  animation: wiggle 1s ease-in-out infinite;
+  display: inline-block;
+}
+
+.form__errors-list {
+  margin: 0;
+  padding-left: 22px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ------------------------------------------
+ * 11) フォームカード
+ * ------------------------------------------ */
+
+/* ガラケー画面内に馴染むよう影や枠を控えめに */
+.form-card {
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  position: relative;
+}
+
+.form-card__footer {
+  margin: 24px 0 0 0;
+  padding-top: 16px;
+  border-top: 2px dashed #ffb3d1;
+  font-size: 14px;
+  color: #c2185b;
+  text-align: center;
+  font-weight: 700;
+}
+.form-card__footer::before {
+  content: "🌸 ";
+}
+
+/* ------------------------------------------
+ * 12) アラート
+ * ------------------------------------------ */
+
+.alert {
+  padding: 14px 18px;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.alert--danger {
+  background: linear-gradient(135deg, #ffe0ee 0%, #ffccdf 100%);
+  border: 2.5px solid #ff6b9d;
+  color: #8b1d4a;
+  box-shadow: 0 3px 10px rgba(255, 107, 157, 0.25);
+}
+.alert--danger::before {
+  content: "💔 ";
+}
+
+.alert--success {
+  background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+  border: 2.5px solid #66bb6a;
+  color: #1b5e20;
+}
+.alert--success::before {
+  content: "✨ ";
+}
+
+/* ------------------------------------------
+ * 13) 詳細ページ
+ * ------------------------------------------ */
+
+.detail-list {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  border: 3.5px solid #ff77b3;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow:
+    0 6px 18px rgba(233, 30, 99, 0.22),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.detail-list__row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 22px;
+  border-bottom: 2.5px dashed #ffd6e8;
+}
+
+@media (min-width: 640px) {
+  .detail-list__row {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+.detail-list__row:last-child {
+  border-bottom: none;
+}
+
+.detail-list__term {
+  flex-shrink: 0;
+  width: 120px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #c2185b;
+  margin: 0;
+}
+.detail-list__term::before {
+  content: "💕 ";
+}
+
+.detail-list__desc {
+  margin: 0;
+  flex: 1;
+  color: #4a1f3a;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+/* ------------------------------------------
+ * 14) 戻るリンク群
+ * ------------------------------------------ */
+
+.page-actions {
+  margin-top: 28px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}

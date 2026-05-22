@@ -1,23 +1,31 @@
-<h1>Todoの詳細</h1>
+<div class="page-header">
+  <h1 class="page-header__title">Todoの詳細</h1>
+  <%= link_to "編集", edit_todo_path(@todo), class: "button button--primary" %>
+</div>
 
-<p>
-  <strong>タイトル：</strong>
-  <%= @todo.title %>
-</p>
+<dl class="detail-list">
+  <div class="detail-list__row">
+    <dt class="detail-list__term">タイトル</dt>
+    <dd class="detail-list__desc"><%= @todo.title %></dd>
+  </div>
+  <div class="detail-list__row">
+    <dt class="detail-list__term">状態</dt>
+    <dd class="detail-list__desc">
+      <span class="todo-card__status <%= @todo.completed ? 'todo-card__status--done' : 'todo-card__status--pending' %>">
+        <%= @todo.completed ? "✓ 完了" : "○ 未完了" %>
+      </span>
+    </dd>
+  </div>
+  <div class="detail-list__row">
+    <dt class="detail-list__term">作成日時</dt>
+    <dd class="detail-list__desc"><%= @todo.created_at.strftime("%Y/%m/%d %H:%M") %></dd>
+  </div>
+  <div class="detail-list__row">
+    <dt class="detail-list__term">更新日時</dt>
+    <dd class="detail-list__desc"><%= @todo.updated_at.strftime("%Y/%m/%d %H:%M") %></dd>
+  </div>
+</dl>
 
-<p>
-  <strong>状態：</strong>
-  <%= @todo.completed ? "完了" : "未完了" %>
-</p>
-
-<p>
-  <strong>作成日時：</strong>
-  <%= @todo.created_at %>
-</p>
-
-<p>
-  <strong>更新日時：</strong>
-  <%= @todo.updated_at %>
-</p>
-
-<%= link_to "一覧に戻る", todos_path %>
+<div class="page-actions">
+  <%= link_to "← 一覧に戻る", todos_path, class: "button" %>
+</div>

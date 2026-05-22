@@ -1,6 +1,12 @@
-<h1>Todoを編集</h1>
+<div class="form-card">
+  <div class="page-header">
+    <h1 class="page-header__title">Todoを編集</h1>
+  </div>
 
-<%= render "form" %>
+  <%= render "form" %>
 
-<%= link_to "詳細に戻る", @todo %> |
-<%= link_to "一覧に戻る", todos_path %>
+  <div class="page-actions">
+    <%= link_to "← 詳細に戻る", @todo, class: "button" %>
+    <%= link_to "← 一覧に戻る", todos_path, class: "button" %>
+  </div>
+</div>
